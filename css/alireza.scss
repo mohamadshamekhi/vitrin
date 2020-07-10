@@ -1,0 +1,374 @@
+@import '_font.scss';
+@import '_varibels.scss';
+
+@mixin mq($size) {
+    @media only screen and (max-width: $size+px) {
+        @content;
+    }
+}
+@mixin mqm($size) {
+    @media only screen and (min-width: $size+px) {
+        @content;
+    }
+}
+
+button {
+    all: unset;
+    outline: none;
+}
+a {
+    text-decoration: none;
+    &:hover {
+        text-decoration: none;
+    }
+}
+ul {
+    list-style: none;
+    margin-bottom: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+}
+body {
+    direction: rtl;
+    font-family: $mainFont;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $textColor;
+}
+
+button,
+input,
+textarea {
+    font-family: $mainFont;
+    outline: unset;
+}
+
+header {
+    padding-top: 23.7px;
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .right {
+            @include mq(991) {
+                margin-bottom: 20px;
+                justify-content: center;
+                text-align: center;
+            }
+            display: flex;
+            align-items: center;
+            .logo {
+                @include mq(522) {
+                    margin-bottom: 20px;
+                    text-align: center;
+                    width: 100%;
+                }
+                display: block;
+                h1 {
+                    display: none;
+                }
+            }
+            nav {
+                margin-right: 21px;
+                @include mq(488) {
+                    width: 100%;
+                    overflow: scroll;
+                }
+                ul {
+                    display: flex;
+                    align-items: center;
+                    margin: 0 -12.5px;
+                    @include mq(488) {
+                        width: 100%;
+                        overflow: auto;
+                        margin: unset;
+                    }
+
+                    li {
+                        margin: 0 12.5px;
+                        min-width: unset;
+                        @include mq(488) {
+                            margin: 0px 5px;
+                            width: 103px;
+                        }
+
+                        a {
+                            @include mq(488) {
+                                display: inline-block;
+
+                                width: 103px;
+                            }
+                            color: $textColor;
+                            min-width: unset;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .left {
+        @include mq(991) {
+            justify-content: center;
+            width: 100%;
+        }
+        display: flex;
+        align-items: center;
+        .search {
+            margin-left: 23px;
+            cursor: pointer;
+        }
+        .btn__city {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 104.43px;
+            height: 38px;
+            margin-left: 30px;
+            background-color: $secondary;
+            border: 1px solid $secondary-Dark;
+            border-radius: 4px;
+            color: $white;
+
+            svg {
+                margin-left: 7.5px;
+            }
+        }
+        .Advertisement_registration {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9.5px 20.7px;
+            background-color: $danger;
+            border: 1px solid $danger-Dark;
+            border-radius: 4px;
+            color: $white;
+            svg {
+                margin-left: 7.5px;
+            }
+        }
+    }
+}
+
+// modal
+#btn__city {
+    .modal-dialog {
+        all: unset;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .modal-content {
+            .modal-body {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-right: 30px;
+                padding-left: 30px;
+                flex-wrap: wrap;
+                @include mq(445) {
+                    justify-content: center;
+                }
+                .btn-outline-primary {
+                    padding: 12px 48px;
+                    margin-top: 31px;
+                    color: $primary;
+                    border-color: $primary;
+                    &:hover {
+                        color: $white;
+                    }
+                }
+
+                
+            }
+            width: 84%;
+            margin-top: 110px;
+            .modal-header {
+                display: flex;
+                align-items: center;
+                position: relative;
+                justify-content: space-between;
+                .close {
+                    all: unset;
+                    width: 49px;
+                    height: 38px;
+                    margin-right: unset;
+                    position: absolute;
+                    top: -30px;
+                    left: 0;
+                    border-radius: 4px;
+                    background-color: $white;
+                    span {
+                        color: red;
+                        font-size: 30px;
+                    }
+                }
+                input {
+                    width: 40%;
+                    height: 35px;
+
+                    &::placeholder {
+                        font-size: 12px;
+                        font-weight: lighter;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#Advertisement_registration {
+    .modal-dialog {
+        all: unset;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .modal-content {
+            .modal-body {
+                form {
+                    .top {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-direction: row;
+                        margin: 0 -20px;
+                        @include mq(972) {
+                            flex-direction: column;
+                            margin: unset;
+                        }
+                        .arrow{
+                            position: absolute;
+                            bottom: 16px;
+                            z-index: 1;
+                            left: 16px;
+                        }
+                        select{
+                            position: relative;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+
+                        }
+                        .text__serch {
+                            display: flex;
+                            justify-content: space-between;
+                            width: calc(33% - 40px);
+                            margin: 0 20px;
+                            flex-direction: column;
+                            @include mq(972) {
+                                width: 100%;
+                             
+                                margin-bottom: 10px;
+                            }
+                            input {
+                                border: 1px solid $border-Color;
+                                padding: 11px 0px;
+                                padding-right: 8px;
+                                border-radius: 4px;
+                                @include mq(972) {
+                                    width: 100%;
+                                }
+                                &::placeholder {
+                                    font-weight: lighter;
+                                }
+                            }
+                            label {
+                                text-align: right;
+                            }
+                        }
+                        .select_vertisement_registration {
+                            display: flex;
+                            position: relative;
+                            @include mq(972) {
+                                width: 100%;
+                             
+                                margin-bottom: 10px;
+                            }
+                            select {
+                                border: 1px solid $border-Color;
+                                padding: 11px 0px;
+                                padding-right: 8px;
+                                border-radius: 4px;
+                                @include mq(972) {
+                                    width: 100%;
+                                }
+                            }
+                            justify-content: space-between;
+                            width: calc(33% - 40px);
+                            margin: 0 20px;
+                            flex-direction: column;
+                            label {
+                                text-align: right;
+                            }
+                        }
+                        .district {
+                            display: flex;
+                            position: relative;
+                            @include mq(972) {
+                                width: 100%;
+                             
+                                margin-bottom: 10px;
+                            }
+                            select {
+                                border: 1px solid $border-Color;
+                                padding: 11px 0px;
+                                padding-right: 8px;
+                                border-radius: 4px;
+                                @include mq(972) {
+                                    width: 100%;
+                                }
+                            }
+                            justify-content: space-between;
+                            flex-direction: column;
+                            width: calc(33% - 40px);
+                            margin: 0 20px;
+                            flex-direction: column;
+                            label {
+                                text-align: right;
+                            }
+                        }
+                    }
+                    .bottem {
+                        margin-right: 20px;
+                        margin-top: 51px;
+                        display: inline-flex;
+                        align-items: center;
+                        input {
+                            margin-left: 5px;
+                        }
+                        label {
+                            margin-left: 30px;
+                            margin-bottom: unset;
+                        }
+                    }
+                }
+            }
+            width: 64%;
+            margin-top: 110px;
+            .modal-header {
+                .close {
+                    all: unset;
+                    width: 49px;
+                    height: 38px;
+                    margin-right: unset;
+                    position: absolute;
+                    top: -30px;
+                    left: 0;
+                    background-color: $white;
+                    border-radius: 4px;
+                    span {
+                        color: red;
+                        font-size: 30px;
+                        margin-right: 17px;
+                    }
+                }
+            }
+            .modal-footer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}
